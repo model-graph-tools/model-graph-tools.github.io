@@ -160,6 +160,117 @@
         .github-link:hover {
             color: var(--accent);
         }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            padding: 80px 0;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-terminal {
+            flex: 0 0 340px;
+            background: var(--terminal-bg);
+            border-radius: 8px;
+            padding: 24px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .hero-terminal .prompt {
+            color: var(--terminal-prompt);
+        }
+
+        .hero-terminal .cmd {
+            color: var(--terminal-text);
+        }
+
+        .hero-terminal .muted {
+            color: var(--terminal-muted);
+        }
+
+        .hero-terminal .success {
+            color: var(--terminal-success);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 48px 0;
+                gap: 32px;
+            }
+
+            .hero-terminal {
+                flex: none;
+                width: 100%;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -177,6 +288,22 @@
         </a>
     </div>
 </header>
+<section class="hero container">
+    <div class="hero-text">
+        <div class="hero-label mono">MODEL GRAPH TOOLS</div>
+        <h1 class="hero-title">Explore the WildFly<br>Management Model</h1>
+        <p class="hero-subtitle">Parse, graph, search, and compare WildFly's management model across versions and feature packs.</p>
+        <div class="hero-actions">
+            <a href="#install" class="btn btn-primary">Get Started</a>
+            <a href="https://github.com/model-graph-tools" class="btn btn-outline" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+    </div>
+    <div class="hero-terminal mono">
+        <div><span class="prompt">$</span> <span class="cmd">mgt start 39</span></div>
+        <div class="muted">Starting model graph for WildFly 39...</div>
+        <div class="success">&#10003; Ready on port 7474</div>
+    </div>
+</section>
 <script>
     (function () {
         var STORAGE_KEY = "mgt-theme";
