@@ -326,6 +326,100 @@
                 transform: rotate(90deg);
             }
         }
+
+        .ecosystem {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .cards {
+            display: flex;
+            gap: 24px;
+        }
+
+        .card {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-label {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .card-label.green  { color: var(--green-text); }
+        .card-label.red    { color: var(--accent); }
+        .card-label.purple { color: var(--purple-text); }
+
+        .card-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .card-features li {
+            font-size: 0.85rem;
+            padding: 4px 0;
+            color: var(--text);
+        }
+
+        .card-features li::before {
+            content: "\2022";
+            color: var(--text-secondary);
+            margin-right: 8px;
+        }
+
+        .card-terminal {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .card-terminal .prompt {
+            color: var(--terminal-prompt);
+        }
+
+        .card-terminal .cmd {
+            color: var(--terminal-text);
+        }
+
+        .card-terminal.green .prompt  { color: var(--green); }
+        .card-terminal.purple .prompt { color: var(--purple); }
+
+        .card-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .cards {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -381,6 +475,55 @@
             <div class="pipeline-box amber">
                 <div class="pipeline-box-name">mgt / MCP</div>
                 <div class="pipeline-box-sub">Query &amp; Explore</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ecosystem">
+    <div class="container">
+        <h2 class="section-title">The Ecosystem</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-label green mono">JAVA CLI</div>
+                <div class="card-name">Analyzer</div>
+                <p class="card-desc">Parse the management model and store it as a Neo4j graph.</p>
+                <ul class="card-features">
+                    <li>Live server or doc ZIP</li>
+                    <li>Full resource tree</li>
+                    <li>Capabilities &amp; relationships</li>
+                </ul>
+                <div class="card-terminal green mono">
+                    <span class="prompt">$</span> <span class="cmd">java -jar analyzer.jar -w localhost</span>
+                </div>
+                <a href="https://github.com/model-graph-tools/analyzer" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-label red mono">RUST CLI</div>
+                <div class="card-name">mgt</div>
+                <p class="card-desc">Orchestrate the analysis pipeline and manage model containers.</p>
+                <ul class="card-features">
+                    <li>Analyze WildFly versions</li>
+                    <li>Start/stop Neo4j containers</li>
+                    <li>Browse model in terminal</li>
+                </ul>
+                <div class="card-terminal mono">
+                    <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
+                </div>
+                <a href="https://github.com/model-graph-tools/tooling" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-label purple mono">MCP SERVER</div>
+                <div class="card-name">Claude Plugin</div>
+                <p class="card-desc">Explore the model from AI agents via MCP and agent skills.</p>
+                <ul class="card-features">
+                    <li>Search &amp; browse resources</li>
+                    <li>Compare versions</li>
+                    <li>Run Cypher queries</li>
+                </ul>
+                <div class="card-terminal purple mono">
+                    <span class="prompt">$</span> <span class="cmd">claude plugin install mgt</span>
+                </div>
+                <a href="https://github.com/model-graph-tools/claude-plugin" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
             </div>
         </div>
     </div>
