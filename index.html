@@ -1,12 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Graph Tools</title>
-    <meta http-equiv="refresh" content="0; url=https://github.com/model-graph-tools">
+    <meta name="description" content="Parse, graph, search, and compare WildFly's management model across versions and feature packs.">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --text: #1a1a1a;
+            --text-secondary: #666666;
+            --border: #e5e7eb;
+            --accent: #e53e3e;
+            --accent-hover: #c53030;
+            --terminal-bg: #1a1a2e;
+            --terminal-text: #c9d1d9;
+            --terminal-prompt: #e53e3e;
+            --terminal-success: #7ee787;
+            --terminal-muted: #8b949e;
+            --green: #22c55e;
+            --green-bg: #f0fdf4;
+            --green-text: #16a34a;
+            --blue: #3b82f6;
+            --blue-bg: #eff6ff;
+            --blue-text: #2563eb;
+            --amber: #eab308;
+            --amber-bg: #fefce8;
+            --amber-text: #ca8a04;
+            --purple: #a855f7;
+            --purple-bg: #faf5ff;
+            --purple-text: #9333ea;
+            --red-bg: #fef2f2;
+            --max-width: 1080px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0d1117;
+            --bg-secondary: #161b22;
+            --text: #c9d1d9;
+            --text-secondary: #8b949e;
+            --border: #30363d;
+            --accent: #e53e3e;
+            --accent-hover: #f56565;
+            --terminal-bg: #161b22;
+            --green-bg: #0d1117;
+            --green-text: #7ee787;
+            --blue-bg: #0d1117;
+            --blue-text: #79c0ff;
+            --amber-bg: #0d1117;
+            --amber-text: #e3b341;
+            --purple-bg: #0d1117;
+            --purple-text: #d2a8ff;
+            --red-bg: #0d1117;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0d1117;
+                --bg-secondary: #161b22;
+                --text: #c9d1d9;
+                --text-secondary: #8b949e;
+                --border: #30363d;
+                --accent: #e53e3e;
+                --accent-hover: #f56565;
+                --terminal-bg: #161b22;
+                --green-bg: #0d1117;
+                --green-text: #7ee787;
+                --blue-bg: #0d1117;
+                --blue-text: #79c0ff;
+                --amber-bg: #0d1117;
+                --amber-text: #e3b341;
+                --purple-bg: #0d1117;
+                --purple-text: #d2a8ff;
+                --red-bg: #0d1117;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .mono {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="https://github.com/model-graph-tools">Model Graph Tools on GitHub</a>...</p>
 </body>
 </html>
