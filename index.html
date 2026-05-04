@@ -420,6 +420,106 @@
                 flex-direction: column;
             }
         }
+
+        .install {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .install-grid {
+            display: flex;
+            gap: 32px;
+        }
+
+        .install-group {
+            flex: 1;
+        }
+
+        .install-group-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--text);
+        }
+
+        .tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .code-block {
+            background: var(--terminal-bg);
+            border-radius: 0 0 6px 6px;
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            color: var(--terminal-text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .code-block code {
+            flex: 1;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            background: none;
+            border: 1px solid var(--terminal-muted);
+            border-radius: 4px;
+            color: var(--terminal-muted);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--terminal-text);
+            color: var(--terminal-text);
+        }
+
+        .standalone-code-block {
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .install-grid {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -528,6 +628,46 @@
         </div>
     </div>
 </section>
+<section class="install" id="install">
+    <div class="container">
+        <h2 class="section-title">Get Started</h2>
+        <div class="install-grid">
+            <div class="install-group">
+                <div class="install-group-title">mgt CLI</div>
+                <div class="tabs" role="tablist">
+                    <button class="tab active" role="tab" data-tab="curl" aria-selected="true">curl</button>
+                    <button class="tab" role="tab" data-tab="brew" aria-selected="false">Homebrew</button>
+                    <button class="tab" role="tab" data-tab="cargo" aria-selected="false">Cargo</button>
+                </div>
+                <div class="tab-content active" id="tab-curl">
+                    <div class="code-block mono">
+                        <code>curl -fsSL https://model-graph-tools.github.io/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -fsSL https://model-graph-tools.github.io/install.sh | sh">Copy</button>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-brew">
+                    <div class="code-block mono">
+                        <code>brew tap hpehl/tap &amp;&amp; brew install mgt</code>
+                        <button class="copy-btn" data-copy="brew tap hpehl/tap && brew install mgt">Copy</button>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-cargo">
+                    <div class="code-block mono">
+                        <code>cargo install mgt</code>
+                        <button class="copy-btn" data-copy="cargo install mgt">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="install-group">
+                <div class="install-group-title">Claude Plugin</div>
+                <div class="code-block standalone-code-block mono">
+                    <code>claude plugin install mgt</code>
+                    <button class="copy-btn" data-copy="claude plugin install mgt">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <script>
     (function () {
         var STORAGE_KEY = "mgt-theme";
@@ -552,6 +692,39 @@
             var next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
             localStorage.setItem(STORAGE_KEY, next);
             apply(next);
+        });
+    })();
+
+    (function () {
+        document.querySelectorAll(".tabs").forEach(function (tabGroup) {
+            tabGroup.addEventListener("click", function (e) {
+                var tab = e.target.closest(".tab");
+                if (!tab) return;
+                var tabId = tab.getAttribute("data-tab");
+                var parent = tabGroup.parentElement;
+                tabGroup.querySelectorAll(".tab").forEach(function (t) {
+                    t.classList.remove("active");
+                    t.setAttribute("aria-selected", "false");
+                });
+                tab.classList.add("active");
+                tab.setAttribute("aria-selected", "true");
+                parent.querySelectorAll(".tab-content").forEach(function (c) {
+                    c.classList.remove("active");
+                });
+                var target = parent.querySelector("#tab-" + tabId);
+                if (target) target.classList.add("active");
+            });
+        });
+
+        document.addEventListener("click", function (e) {
+            var btn = e.target.closest(".copy-btn");
+            if (!btn) return;
+            var text = btn.getAttribute("data-copy");
+            navigator.clipboard.writeText(text).then(function () {
+                var original = btn.textContent;
+                btn.textContent = "Copied!";
+                setTimeout(function () { btn.textContent = original; }, 1500);
+            });
         });
     })();
 </script>
