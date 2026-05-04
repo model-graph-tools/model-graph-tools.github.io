@@ -271,6 +271,61 @@
                 font-size: 1.75rem;
             }
         }
+
+        .diagram {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-box {
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .pipeline-box-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .pipeline-box-sub {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .pipeline-arrow {
+            color: var(--border);
+            font-size: 1.25rem;
+        }
+
+        .pipeline-box.red    { background: var(--red-bg);    border: 1px solid var(--accent); }
+        .pipeline-box.red    .pipeline-box-name { color: var(--accent); }
+        .pipeline-box.green  { background: var(--green-bg);  border: 1px solid var(--green); }
+        .pipeline-box.green  .pipeline-box-name { color: var(--green-text); }
+        .pipeline-box.blue   { background: var(--blue-bg);   border: 1px solid var(--blue); }
+        .pipeline-box.blue   .pipeline-box-name { color: var(--blue-text); }
+        .pipeline-box.amber  { background: var(--amber-bg);  border: 1px solid var(--amber); }
+        .pipeline-box.amber  .pipeline-box-name { color: var(--amber-text); }
+
+        @media (max-width: 768px) {
+            .pipeline {
+                flex-direction: column;
+            }
+
+            .pipeline-arrow {
+                transform: rotate(90deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -302,6 +357,32 @@
         <div><span class="prompt">$</span> <span class="cmd">mgt start 39</span></div>
         <div class="muted">Starting model graph for WildFly 39...</div>
         <div class="success">&#10003; Ready on port 7474</div>
+    </div>
+</section>
+<section class="diagram">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="pipeline">
+            <div class="pipeline-box red">
+                <div class="pipeline-box-name">WildFly</div>
+                <div class="pipeline-box-sub">Server / Doc ZIP</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-box green">
+                <div class="pipeline-box-name">Analyzer</div>
+                <div class="pipeline-box-sub">Java CLI</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-box blue">
+                <div class="pipeline-box-name">Neo4j</div>
+                <div class="pipeline-box-sub">Graph DB</div>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-box amber">
+                <div class="pipeline-box-name">mgt / MCP</div>
+                <div class="pipeline-box-sub">Query &amp; Explore</div>
+            </div>
+        </div>
     </div>
 </section>
 <script>
