@@ -520,6 +520,27 @@
                 flex-direction: column;
             }
         }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        footer .footer-sep {
+            margin: 0 8px;
+        }
     </style>
 </head>
 <body>
@@ -668,6 +689,15 @@
         </div>
     </div>
 </section>
+<footer>
+    <div class="container">
+        <span class="mono">Model Graph Tools</span>
+        <span class="footer-sep">&middot;</span>
+        <a href="https://github.com/model-graph-tools" target="_blank" rel="noopener">GitHub</a>
+        <span class="footer-sep">&middot;</span>
+        <span>Apache-2.0</span>
+    </div>
+</footer>
 <script>
     (function () {
         var STORAGE_KEY = "mgt-theme";
