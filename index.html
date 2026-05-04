@@ -428,12 +428,15 @@
 
         .install-grid {
             display: flex;
-            align-items: flex-end;
+            align-items: stretch;
             gap: 32px;
         }
 
         .install-group {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .install-group-title {
