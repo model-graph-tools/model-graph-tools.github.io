@@ -95,7 +95,7 @@
                         <div class="architecture-tier-label mono">MODEL</div>
                         <div class="architecture-tier-content">
                             <div class="architecture-inner full">
-                                <div class="architecture-inner-name">Model Images</div>
+                                <div class="architecture-inner-name">Model Database Images</div>
                                 <div class="architecture-inner-detail mono">
                                     <a href="https://quay.io/repository/modelgraphtools/model" target="_blank">quay.io/modelgraphtools/model</a>
                                 </div>
@@ -118,10 +118,10 @@
                     </div>
                 </div>
                 <div class="schema-container">
-                    <h3 class="schema-title">Database Schema</h3>
+                    <h3 class="schema-title">Model Database</h3>
                     <p class="schema-caption">
-                        The management model is stored as a graph &mdash; resources, attributes, operations,
-                        capabilities, and their relationships in Neo4j.
+                        The management model is stored as a graph in a Neo4j database. It contains nodes and relationships for
+                        resources, attributes, operations, capabilities, and more.
                     </p>
                     <img
                         src="schema.svg"
@@ -160,8 +160,8 @@
                         <div class="card-name">mgt</div>
                         <p class="card-desc">Orchestrate the analysis pipeline and manage model containers.</p>
                         <ul class="card-features">
-                            <li>Analyze WildFly versions</li>
-                            <li>Start/stop Neo4j containers</li>
+                            <li>Analyze WildFly and feature packs</li>
+                            <li>Start/stop model containers</li>
                             <li>Open the Neo4J browser</li>
                         </ul>
                         <div class="card-terminal mono">
