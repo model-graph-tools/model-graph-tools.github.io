@@ -25,7 +25,7 @@
     --purple-text: #9333ea;
     --red-bg: #fef2f2;
     --font-size-base: 18px;
-    --max-width: 1080px;
+    --max-width: 1280px;
 }
 
 [data-theme="dark"] {
@@ -228,7 +228,7 @@ header {
 }
 
 .hero-terminal {
-    flex: 0 0 340px;
+    flex: 0 1 480px;
     background: var(--terminal-bg);
     border-radius: 8px;
     padding: 24px;
@@ -259,6 +259,18 @@ header {
 
 .hero-answer {
     color: var(--terminal-success);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 16px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .hero {
+        padding: 64px 24px;
+    }
 }
 
 @media (max-width: 768px) {
