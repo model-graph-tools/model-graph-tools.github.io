@@ -359,6 +359,25 @@ header {
 .architecture-tier.purple { --tier-color: var(--purple-text); }
 .architecture-tier.red    { --tier-color: var(--accent); }
 .architecture-tier.blue   { --tier-color: var(--blue-text); }
+.architecture-tier.green  { --tier-color: var(--green-text); }
+
+.architecture-tier.dashed {
+    border-style: dashed;
+    opacity: 0.75;
+    position: relative;
+}
+
+.architecture-tier-badge {
+    position: absolute;
+    top: -10px;
+    right: var(--space-lg);
+    background: var(--bg-secondary);
+    padding: 0 var(--space-sm);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
 
 /* ──────────────────────────────────────
    Graph schema
