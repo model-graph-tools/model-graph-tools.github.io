@@ -57,26 +57,63 @@
         <section class="section diagram">
             <div class="container">
                 <h2 class="section-title">How It Works</h2>
-                <div class="pipeline">
-                    <div class="pipeline-box red">
-                        <div class="pipeline-box-name">WildFly</div>
-                        <div class="pipeline-box-sub">Server / Doc ZIP</div>
+                <div class="architecture">
+                    <div class="architecture-tier purple">
+                        <div class="architecture-tier-label mono">AGENT</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">Skill</div>
+                                <div class="architecture-inner-detail mono">
+                                    <span class="prompt">&gt;</span> /mgt:model
+                                </div>
+                            </div>
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">MCP Server</div>
+                                <div class="architecture-inner-detail mono">@model-graph-tools/mcp-server</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pipeline-arrow">&rarr;</div>
-                    <div class="pipeline-box green">
-                        <div class="pipeline-box-name">Analyzer</div>
-                        <div class="pipeline-box-sub">Java CLI</div>
+                    <div class="architecture-arrow">&darr;</div>
+                    <div class="architecture-tier red">
+                        <div class="architecture-tier-label mono">CLI</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-detail mono">
+                                    <div><span class="prompt">$</span> mgt analyze 39</div>
+                                    <div><span class="prompt">$</span> mgt analyze grpc</div>
+                                </div>
+                            </div>
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-detail mono">
+                                    <div><span class="prompt">$</span> mgt start 39</div>
+                                    <div><span class="prompt">$</span> mgt ps</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pipeline-arrow">&rarr;</div>
-                    <div class="pipeline-box blue">
-                        <div class="pipeline-box-name">Neo4j</div>
-                        <div class="pipeline-box-sub">Graph DB</div>
+                    <div class="architecture-arrow">&darr;</div>
+                    <div class="architecture-tier green">
+                        <div class="architecture-tier-label mono">ANALYZER</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner full">
+                                <div class="architecture-inner-detail mono">
+                                    <span class="prompt">$</span> java -jar analyzer.jar -w localhost
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pipeline-arrow">&rarr;</div>
-                    <div class="pipeline-box amber">
-                        <div class="pipeline-box-name">mgt / MCP</div>
-                        <div class="pipeline-box-sub">Query &amp; Explore</div>
-                    </div>
+                </div>
+                <div class="schema-container">
+                    <h3 class="schema-title">Graph Schema</h3>
+                    <p class="schema-caption">
+                        The management model is stored as a graph &mdash; resources, attributes, operations,
+                        capabilities, and their relationships in Neo4j.
+                    </p>
+                    <img
+                        src="schema.svg"
+                        alt="Graph schema showing resource, attribute, operation, capability, and parameter nodes with their relationships"
+                        class="schema-img"
+                    />
                 </div>
             </div>
         </section>

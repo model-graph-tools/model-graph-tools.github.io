@@ -273,47 +273,107 @@ header {
 }
 
 /* ──────────────────────────────────────
-   Pipeline diagram
+   Architecture diagram
    ────────────────────────────────────── */
 
-.pipeline {
+.architecture {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto 3rem;
 }
 
-.pipeline-box {
+.architecture-tier {
+    width: 100%;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 16px 20px;
-    text-align: center;
-    min-width: 120px;
-    background: var(--pipeline-bg);
-    border: 1px solid var(--pipeline-border);
+    padding: 20px 24px;
+    background: var(--bg-secondary);
 }
 
-.pipeline-box-name {
+.architecture-tier-label {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    color: var(--tier-color);
     font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 2px;
-    color: var(--pipeline-color);
 }
 
-.pipeline-box-sub {
-    font-size: 0.75rem;
+.architecture-tier-content {
+    display: flex;
+    gap: 16px;
+}
+
+.architecture-inner {
+    flex: 1;
+    background: var(--terminal-bg);
+    border-radius: 6px;
+    padding: 12px 16px;
+    min-width: 0;
+}
+
+.architecture-inner.full {
+    flex: 1;
+}
+
+.architecture-inner-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--terminal-text);
+}
+
+.architecture-inner-detail {
+    font-size: 0.8rem;
+    color: var(--terminal-text);
+    line-height: 1.7;
+}
+
+.architecture-inner-detail .prompt {
+    color: var(--terminal-prompt);
+}
+
+.architecture-arrow {
     color: var(--text-secondary);
-}
-
-.pipeline-arrow {
-    color: var(--border);
     font-size: 1.25rem;
+    padding: 8px 0;
 }
 
-.pipeline-box.red   { --pipeline-bg: var(--red-bg);   --pipeline-border: var(--accent); --pipeline-color: var(--accent); }
-.pipeline-box.green { --pipeline-bg: var(--green-bg); --pipeline-border: var(--green);  --pipeline-color: var(--green-text); }
-.pipeline-box.blue  { --pipeline-bg: var(--blue-bg);  --pipeline-border: var(--blue);   --pipeline-color: var(--blue-text); }
-.pipeline-box.amber { --pipeline-bg: var(--amber-bg); --pipeline-border: var(--amber);  --pipeline-color: var(--amber-text); }
+.architecture-tier.purple { --tier-color: var(--purple-text); }
+.architecture-tier.red    { --tier-color: var(--accent); }
+.architecture-tier.green  { --tier-color: var(--green-text); }
+
+/* ──────────────────────────────────────
+   Graph schema
+   ────────────────────────────────────── */
+
+.schema-container {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.schema-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.schema-caption {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.schema-img {
+    max-width: 100%;
+    height: auto;
+}
+
+[data-theme="dark"] .schema-img {
+    filter: invert(0.88) hue-rotate(180deg);
+}
 
 /* ──────────────────────────────────────
    Ecosystem cards
@@ -635,12 +695,12 @@ footer .footer-sep {
         font-size: 1.75rem;
     }
 
-    .pipeline {
+    .architecture-tier-content {
         flex-direction: column;
     }
 
-    .pipeline-arrow {
-        transform: rotate(90deg);
+    .schema-caption {
+        display: none;
     }
 
     .cards {
