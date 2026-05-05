@@ -191,7 +191,6 @@ header {
     font-size: 1.1rem;
     color: var(--text-secondary);
     margin-bottom: 24px;
-    max-width: 480px;
 }
 
 .hero-actions {
