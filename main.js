@@ -55,7 +55,7 @@
             setTimeout(function () { btn.textContent = original; }, 1500);
         }).catch(function () {
             btn.textContent = "Failed";
-            setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+            setTimeout(function () { btn.textContent = original; }, 1500);
         });
     });
 })();
