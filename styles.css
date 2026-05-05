@@ -24,6 +24,7 @@
     --purple-bg: #faf5ff;
     --purple-text: #9333ea;
     --red-bg: #fef2f2;
+    --font-size-base: 18px;
     --max-width: 1080px;
 }
 
@@ -67,6 +68,10 @@
         --purple-text: #d2a8ff;
         --red-bg: #0d1117;
     }
+}
+
+html {
+    font-size: var(--font-size-base);
 }
 
 *, *::before, *::after {
