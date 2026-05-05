@@ -339,6 +339,15 @@ header {
     font-size: 0.8rem;
     color: var(--terminal-text);
     line-height: 1.7;
+
+    a {
+        color: var(--terminal-text);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .architecture-arrow {
