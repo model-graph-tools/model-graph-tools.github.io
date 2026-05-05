@@ -37,6 +37,10 @@ main() {
         echo "Add ${INSTALL_DIR} to your PATH:"
         echo "  export PATH=\"${INSTALL_DIR}:\$PATH\""
     fi
+
+    echo ""
+    echo "Downloading configuration files..."
+    "${INSTALL_DIR}/${BINARY}" update
 }
 
 detect_os() {
