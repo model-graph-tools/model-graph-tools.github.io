@@ -343,6 +343,7 @@ header {
 .architecture-tier.purple { --tier-color: var(--purple-text); }
 .architecture-tier.red    { --tier-color: var(--accent); }
 .architecture-tier.green  { --tier-color: var(--green-text); }
+.architecture-tier.blue   { --tier-color: var(--blue-text); }
 
 /* ──────────────────────────────────────
    Graph schema

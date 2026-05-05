@@ -77,27 +77,25 @@
                     <div class="architecture-tier red">
                         <div class="architecture-tier-label mono">CLI</div>
                         <div class="architecture-tier-content">
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-detail mono">
-                                    <div><span class="prompt">$</span> mgt analyze 39</div>
-                                    <div><span class="prompt">$</span> mgt analyze grpc</div>
-                                </div>
-                            </div>
-                            <div class="architecture-inner">
+                            <div class="architecture-inner full">
+                                <div class="architecture-inner-name">mgt</div>
                                 <div class="architecture-inner-detail mono">
                                     <div><span class="prompt">$</span> mgt start 39</div>
+                                    <div><span class="prompt">$</span> mgt versions</div>
                                     <div><span class="prompt">$</span> mgt ps</div>
+                                    <div><span class="prompt">$</span> mgt stop 39</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="architecture-arrow">&darr;</div>
-                    <div class="architecture-tier green">
-                        <div class="architecture-tier-label mono">ANALYZER</div>
+                    <div class="architecture-tier blue">
+                        <div class="architecture-tier-label mono">MODEL</div>
                         <div class="architecture-tier-content">
                             <div class="architecture-inner full">
+                                <div class="architecture-inner-name">Model Images</div>
                                 <div class="architecture-inner-detail mono">
-                                    <span class="prompt">$</span> java -jar analyzer.jar -w localhost
+                                    quay.io/modelgraphtools/model
                                 </div>
                             </div>
                         </div>
