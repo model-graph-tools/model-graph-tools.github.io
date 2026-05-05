@@ -1,218 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Graph Tools</title>
-    <meta name="description" content="Parse, graph, search, and compare WildFly's management model across versions and feature packs.">
-    <link rel="icon" type="image/png" href="icon.png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header>
-    <a href="/" class="logo mono">Model Graph Tools</a>
-    <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-            <span id="themeIcon">&#9789;</span>
-        </button>
-        <a href="https://github.com/model-graph-tools" class="github-link" target="_blank" rel="noopener">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            GitHub
-        </a>
-    </div>
-</header>
-<section class="hero container">
-    <div class="hero-text">
-        <div class="hero-label mono">MODEL GRAPH TOOLS</div>
-        <h1 class="hero-title">Explore the WildFly<br>Management Model</h1>
-        <p class="hero-subtitle">Ask questions about WildFly's management model from any AI agent &mdash; search, compare, and explore across versions and feature packs.</p>
-        <div class="hero-actions">
-            <a href="#install" class="btn btn-primary">Get Started</a>
-            <a href="https://github.com/model-graph-tools" class="btn btn-outline" target="_blank" rel="noopener">GitHub &rarr;</a>
-        </div>
-    </div>
-    <div class="hero-terminal mono">
-        <div class="hero-question"><span class="prompt">&gt;</span> How do I add a datasource?</div>
-        <div class="hero-answer">Required: jndi-name, driver-name</div>
-        <div class="hero-answer">62 optional attributes including</div>
-        <div class="hero-answer muted">connection-url, pool-size, validation&hellip;</div>
-    </div>
-</section>
-<section class="diagram">
-    <div class="container">
-        <h2 class="section-title">How It Works</h2>
-        <div class="pipeline">
-            <div class="pipeline-box red">
-                <div class="pipeline-box-name">WildFly</div>
-                <div class="pipeline-box-sub">Server / Doc ZIP</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Model Graph Tools</title>
+        <meta
+            name="description"
+            content="Parse, graph, search, and compare WildFly's management model across versions and feature packs."
+        />
+        <link rel="icon" type="image/png" href="icon.png" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <a href="/" class="logo mono">Model Graph Tools</a>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span id="themeIcon">&#9789;</span>
+                </button>
+                <a href="https://github.com/model-graph-tools" class="github-link" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                        />
+                    </svg>
+                    GitHub
+                </a>
             </div>
-            <div class="pipeline-arrow">&rarr;</div>
-            <div class="pipeline-box green">
-                <div class="pipeline-box-name">Analyzer</div>
-                <div class="pipeline-box-sub">Java CLI</div>
-            </div>
-            <div class="pipeline-arrow">&rarr;</div>
-            <div class="pipeline-box blue">
-                <div class="pipeline-box-name">Neo4j</div>
-                <div class="pipeline-box-sub">Graph DB</div>
-            </div>
-            <div class="pipeline-arrow">&rarr;</div>
-            <div class="pipeline-box amber">
-                <div class="pipeline-box-name">mgt / MCP</div>
-                <div class="pipeline-box-sub">Query &amp; Explore</div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="ecosystem">
-    <div class="container">
-        <h2 class="section-title">The Ecosystem</h2>
-        <div class="cards">
-            <div class="card">
-                <div class="card-label green mono">JAVA CLI</div>
-                <div class="card-name">Analyzer</div>
-                <p class="card-desc">Parse the management model and store it as a Neo4j graph.</p>
-                <ul class="card-features">
-                    <li>Live server or doc ZIP</li>
-                    <li>Full resource tree</li>
-                    <li>Capabilities &amp; relationships</li>
-                </ul>
-                <div class="card-terminal green mono">
-                    <span class="prompt">$</span> <span class="cmd">java -jar analyzer.jar -w localhost</span>
+        </header>
+        <section class="hero container">
+            <div class="hero-text">
+                <div class="hero-label mono">MODEL GRAPH TOOLS</div>
+                <h1 class="hero-title">Explore the WildFly<br />Management Model</h1>
+                <p class="hero-subtitle">
+                    Ask questions about WildFly's management model from any AI agent &mdash; search, compare, and
+                    explore across versions and feature packs.
+                </p>
+                <div class="hero-actions">
+                    <a href="#install" class="btn btn-primary">Get Started</a>
+                    <a
+                        href="https://github.com/model-graph-tools"
+                        class="btn btn-outline"
+                        target="_blank"
+                        rel="noopener"
+                        >GitHub &rarr;</a
+                    >
                 </div>
-                <a href="https://github.com/model-graph-tools/analyzer" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
             </div>
-            <div class="card">
-                <div class="card-label red mono">RUST CLI</div>
-                <div class="card-name">mgt</div>
-                <p class="card-desc">Orchestrate the analysis pipeline and manage model containers.</p>
-                <ul class="card-features">
-                    <li>Analyze WildFly versions</li>
-                    <li>Start/stop Neo4j containers</li>
-                    <li>Open the Neo4J browser</li>
-                </ul>
-                <div class="card-terminal mono">
-                    <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
-                </div>
-                <a href="https://github.com/model-graph-tools/tooling" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+            <div class="hero-terminal mono">
+                <div class="hero-question"><span class="prompt">&gt;</span> How do I add a datasource?</div>
+                <div class="hero-answer">Required: jndi-name, driver-name</div>
+                <div class="hero-answer">62 optional attributes including</div>
+                <div class="hero-answer muted">connection-url, pool-size, validation&hellip;</div>
             </div>
-            <div class="card">
-                <div class="card-label purple mono">MCP SERVER</div>
-                <div class="card-name">Claude Plugin</div>
-                <p class="card-desc">Explore the model from AI agents via MCP and agent skills.</p>
-                <ul class="card-features">
-                    <li>Search &amp; browse resources</li>
-                    <li>Compare versions</li>
-                    <li>Run Cypher queries</li>
-                </ul>
-                <div class="card-terminal purple mono">
-                    <div><span class="prompt">$</span> <span class="cmd">claude plugin marketplace add https://github.com/model-graph-tools/claude-plugin</span></div>
-                    <div><span class="prompt">$</span> <span class="cmd">claude plugin install mgt@model-graph-tools</span></div>
-                </div>
-                <a href="https://github.com/model-graph-tools/claude-plugin" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="prompts">
-    <div class="container">
-        <h2 class="section-title">What You Can Ask</h2>
-        <p class="prompts-subtitle">Use natural language or the <span class="mono">/mgt:model</span> slash command in Claude Code. The skill also activates automatically in any MCP&#8209;compatible agent.</p>
-        <div class="prompts-grid">
-            <div class="prompts-category">
-                <div class="prompts-category-title">Browse &amp; Search</div>
-                <ul class="prompts-list mono">
-                    <li>How do I add a new datasource?</li>
-                    <li>How does the logging subsystem work?</li>
-                    <li>How is TLS configured?</li>
-                    <li>Tell me more about credential stores.</li>
-                </ul>
-            </div>
-            <div class="prompts-category">
-                <div class="prompts-category-title">Compare Versions</div>
-                <ul class="prompts-list mono">
-                    <li>Compare the last two versions of WildFly.</li>
-                    <li>Which attributes have changed?</li>
-                    <li>Compare the IO subsystem between WildFly 23 and now.</li>
-                </ul>
-            </div>
-            <div class="prompts-category">
-                <div class="prompts-category-title">Stability &amp; Deprecation</div>
-                <ul class="prompts-list mono">
-                    <li>Show me how stability levels are used.</li>
-                    <li>Are there any community features?</li>
-                    <li>Show me all preview resources.</li>
-                    <li>What resources have been deprecated recently?</li>
-                </ul>
-            </div>
-            <div class="prompts-category">
-                <div class="prompts-category-title">Feature Packs</div>
-                <ul class="prompts-list mono">
-                    <li>What resources does the AI feature pack provide?</li>
-                    <li>How is the gRPC feature pack structured?</li>
-                    <li>How do I configure the GraphQL feature pack?</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="install" id="install">
-    <div class="container">
-        <h2 class="section-title">Get Started</h2>
-        <div class="install-grid">
-            <div class="install-group">
-                <div class="install-group-title">mgt CLI</div>
-                <div class="tabs" role="tablist">
-                    <button class="tab active" role="tab" data-tab="curl" aria-selected="true">curl</button>
-                    <button class="tab" role="tab" data-tab="brew" aria-selected="false">Homebrew</button>
-                    <button class="tab" role="tab" data-tab="cargo" aria-selected="false">Cargo</button>
-                </div>
-                <div class="tab-content active" id="tab-curl">
-                    <div class="code-block mono">
-                        <code>curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh</code>
-                        <button class="copy-btn" data-copy="curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh">Copy</button>
+        </section>
+        <section class="diagram">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="pipeline">
+                    <div class="pipeline-box red">
+                        <div class="pipeline-box-name">WildFly</div>
+                        <div class="pipeline-box-sub">Server / Doc ZIP</div>
                     </div>
-                </div>
-                <div class="tab-content" id="tab-brew">
-                    <div class="code-block mono">
-                        <code>brew tap hpehl/tap &amp;&amp; brew install mgt</code>
-                        <button class="copy-btn" data-copy="brew tap hpehl/tap && brew install mgt">Copy</button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <div class="pipeline-box green">
+                        <div class="pipeline-box-name">Analyzer</div>
+                        <div class="pipeline-box-sub">Java CLI</div>
                     </div>
-                </div>
-                <div class="tab-content" id="tab-cargo">
-                    <div class="code-block mono">
-                        <code>cargo install mgt</code>
-                        <button class="copy-btn" data-copy="cargo install mgt">Copy</button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <div class="pipeline-box blue">
+                        <div class="pipeline-box-name">Neo4j</div>
+                        <div class="pipeline-box-sub">Graph DB</div>
+                    </div>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <div class="pipeline-box amber">
+                        <div class="pipeline-box-name">mgt / MCP</div>
+                        <div class="pipeline-box-sub">Query &amp; Explore</div>
                     </div>
                 </div>
             </div>
-            <div class="install-group">
-                <div class="install-group-title">Claude Plugin</div>
-                <div class="code-block standalone-code-block code-block-multi mono">
-                    <div class="code-block-line">
-                        <code>claude plugin marketplace add https://github.com/model-graph-tools/claude-plugin</code>
-                        <button class="copy-btn" data-copy="claude plugin marketplace add https://github.com/model-graph-tools/claude-plugin">Copy</button>
+        </section>
+        <section class="ecosystem">
+            <div class="container">
+                <h2 class="section-title">The Ecosystem</h2>
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-label green mono">JAVA CLI</div>
+                        <div class="card-name">Analyzer</div>
+                        <p class="card-desc">Parse the management model and store it as a Neo4j graph.</p>
+                        <ul class="card-features">
+                            <li>Live server or doc ZIP</li>
+                            <li>Full resource tree</li>
+                            <li>Capabilities &amp; relationships</li>
+                        </ul>
+                        <div class="card-terminal green mono">
+                            <span class="prompt">$</span> <span class="cmd">java -jar analyzer.jar -w localhost</span>
+                        </div>
+                        <a
+                            href="https://github.com/model-graph-tools/analyzer"
+                            class="card-link"
+                            target="_blank"
+                            rel="noopener"
+                            >View on GitHub &rarr;</a
+                        >
                     </div>
-                    <div class="code-block-line">
-                        <code>claude plugin install mgt@model-graph-tools</code>
-                        <button class="copy-btn" data-copy="claude plugin install mgt@model-graph-tools">Copy</button>
+                    <div class="card">
+                        <div class="card-label red mono">RUST CLI</div>
+                        <div class="card-name">mgt</div>
+                        <p class="card-desc">Orchestrate the analysis pipeline and manage model containers.</p>
+                        <ul class="card-features">
+                            <li>Analyze WildFly versions</li>
+                            <li>Start/stop Neo4j containers</li>
+                            <li>Open the Neo4J browser</li>
+                        </ul>
+                        <div class="card-terminal mono">
+                            <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
+                        </div>
+                        <a
+                            href="https://github.com/model-graph-tools/tooling"
+                            class="card-link"
+                            target="_blank"
+                            rel="noopener"
+                            >View on GitHub &rarr;</a
+                        >
+                    </div>
+                    <div class="card">
+                        <div class="card-label purple mono">MCP SERVER</div>
+                        <div class="card-name">Claude Plugin</div>
+                        <p class="card-desc">Explore the model from AI agents via MCP and agent skills.</p>
+                        <ul class="card-features">
+                            <li>Search &amp; browse resources</li>
+                            <li>Compare versions</li>
+                            <li>Run Cypher queries</li>
+                        </ul>
+                        <div class="card-terminal purple mono">
+                            <div>
+                                <span class="prompt">$</span>
+                                <span class="cmd"
+                                    >claude plugin marketplace add
+                                    https://github.com/model-graph-tools/claude-plugin</span
+                                >
+                            </div>
+                            <div>
+                                <span class="prompt">$</span>
+                                <span class="cmd">claude plugin install mgt@model-graph-tools</span>
+                            </div>
+                        </div>
+                        <a
+                            href="https://github.com/model-graph-tools/claude-plugin"
+                            class="card-link"
+                            target="_blank"
+                            rel="noopener"
+                            >View on GitHub &rarr;</a
+                        >
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<footer>
-    <div class="container">
-        <span class="mono">Model Graph Tools</span>
-        <span class="footer-sep">&middot;</span>
-        <a href="https://github.com/model-graph-tools" target="_blank" rel="noopener">GitHub</a>
-        <span class="footer-sep">&middot;</span>
-        <span>Apache-2.0</span>
-    </div>
-</footer>
-<script src="main.js"></script>
-</body>
+        </section>
+        <section class="prompts">
+            <div class="container">
+                <h2 class="section-title">What You Can Ask</h2>
+                <p class="prompts-subtitle">
+                    Use natural language or the <span class="mono">/mgt:model</span> slash command in Claude Code. The
+                    skill also activates automatically in any MCP&#8209;compatible agent.
+                </p>
+                <div class="prompts-grid">
+                    <div class="prompts-category">
+                        <div class="prompts-category-title">Browse &amp; Search</div>
+                        <ul class="prompts-list mono">
+                            <li>How do I add a new datasource?</li>
+                            <li>How does the logging subsystem work?</li>
+                            <li>How is TLS configured?</li>
+                            <li>Tell me more about credential stores.</li>
+                        </ul>
+                    </div>
+                    <div class="prompts-category">
+                        <div class="prompts-category-title">Compare Versions</div>
+                        <ul class="prompts-list mono">
+                            <li>Compare the last two versions of WildFly.</li>
+                            <li>Which attributes have changed?</li>
+                            <li>Compare the undertow subsystem between WildFly 12 and now.</li>
+                        </ul>
+                    </div>
+                    <div class="prompts-category">
+                        <div class="prompts-category-title">Stability &amp; Deprecation</div>
+                        <ul class="prompts-list mono">
+                            <li>Show me how stability levels are used.</li>
+                            <li>Are there any community features?</li>
+                            <li>Show me all preview resources.</li>
+                            <li>What resources have been deprecated recently?</li>
+                        </ul>
+                    </div>
+                    <div class="prompts-category">
+                        <div class="prompts-category-title">Feature Packs</div>
+                        <ul class="prompts-list mono">
+                            <li>What resources does the AI feature pack provide?</li>
+                            <li>How is the gRPC feature pack structured?</li>
+                            <li>How do I configure the GraphQL feature pack?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="install" id="install">
+            <div class="container">
+                <h2 class="section-title">Get Started</h2>
+                <div class="install-grid">
+                    <div class="install-group">
+                        <div class="install-group-title">mgt CLI</div>
+                        <div class="tabs" role="tablist">
+                            <button class="tab active" role="tab" data-tab="curl" aria-selected="true">curl</button>
+                            <button class="tab" role="tab" data-tab="brew" aria-selected="false">Homebrew</button>
+                            <button class="tab" role="tab" data-tab="cargo" aria-selected="false">Cargo</button>
+                        </div>
+                        <div class="tab-content active" id="tab-curl">
+                            <div class="code-block mono">
+                                <code>curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh</code>
+                                <button
+                                    class="copy-btn"
+                                    data-copy="curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-brew">
+                            <div class="code-block mono">
+                                <code>brew tap hpehl/tap &amp;&amp; brew install mgt</code>
+                                <button class="copy-btn" data-copy="brew tap hpehl/tap && brew install mgt">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-cargo">
+                            <div class="code-block mono">
+                                <code>cargo install mgt</code>
+                                <button class="copy-btn" data-copy="cargo install mgt">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="install-group">
+                        <div class="install-group-title">Claude Plugin</div>
+                        <div class="code-block standalone-code-block code-block-multi mono">
+                            <div class="code-block-line">
+                                <code
+                                    >claude plugin marketplace add
+                                    https://github.com/model-graph-tools/claude-plugin</code
+                                >
+                                <button
+                                    class="copy-btn"
+                                    data-copy="claude plugin marketplace add https://github.com/model-graph-tools/claude-plugin"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                            <div class="code-block-line">
+                                <code>claude plugin install mgt@model-graph-tools</code>
+                                <button class="copy-btn" data-copy="claude plugin install mgt@model-graph-tools">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <span class="mono">Model Graph Tools</span>
+                <span class="footer-sep">&middot;</span>
+                <a href="https://github.com/model-graph-tools" target="_blank" rel="noopener">GitHub</a>
+                <span class="footer-sep">&middot;</span>
+                <span>Apache-2.0</span>
+            </div>
+        </footer>
+        <script src="main.js"></script>
+    </body>
 </html>
