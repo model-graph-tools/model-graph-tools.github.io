@@ -26,7 +26,7 @@
     <div class="hero-text">
         <div class="hero-label mono">MODEL GRAPH TOOLS</div>
         <h1 class="hero-title">Explore the WildFly<br>Management Model</h1>
-        <p class="hero-subtitle">Parse, graph, search, and compare WildFly's management model across versions and feature packs.</p>
+        <p class="hero-subtitle">Ask questions about WildFly's management model from any AI agent &mdash; search, compare, and explore across versions and feature packs.</p>
         <div class="hero-actions">
             <a href="#install" class="btn btn-primary">Get Started</a>
             <a href="https://github.com/model-graph-tools" class="btn btn-outline" target="_blank" rel="noopener">GitHub &rarr;</a>
@@ -111,6 +111,47 @@
                     <div><span class="prompt">$</span> <span class="cmd">claude plugin install mgt@model-graph-tools</span></div>
                 </div>
                 <a href="https://github.com/model-graph-tools/claude-plugin" class="card-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="prompts">
+    <div class="container">
+        <h2 class="section-title">What You Can Ask</h2>
+        <p class="prompts-subtitle">Use natural language or the <span class="mono">/mgt:model</span> slash command in Claude Code. The skill also activates automatically in any MCP&#8209;compatible agent.</p>
+        <div class="prompts-grid">
+            <div class="prompts-category">
+                <div class="prompts-category-title">Browse &amp; Search</div>
+                <ul class="prompts-list mono">
+                    <li>How do I add a new datasource?</li>
+                    <li>How does the logging subsystem work?</li>
+                    <li>How is TLS configured?</li>
+                    <li>Tell me more about credential stores.</li>
+                </ul>
+            </div>
+            <div class="prompts-category">
+                <div class="prompts-category-title">Compare Versions</div>
+                <ul class="prompts-list mono">
+                    <li>Compare WildFly 38 and 39.</li>
+                    <li>What attributes changed between WildFly 38 and 39?</li>
+                    <li>Compare the IO subsystem between WildFly 23 and the latest version.</li>
+                </ul>
+            </div>
+            <div class="prompts-category">
+                <div class="prompts-category-title">Stability &amp; Deprecation</div>
+                <ul class="prompts-list mono">
+                    <li>Are there any community features in WildFly 39?</li>
+                    <li>Show me all preview resources.</li>
+                    <li>What operations have been deprecated recently?</li>
+                </ul>
+            </div>
+            <div class="prompts-category">
+                <div class="prompts-category-title">Feature Packs</div>
+                <ul class="prompts-list mono">
+                    <li>What resources does the AI feature pack provide?</li>
+                    <li>Compare the first and the latest versions of the AI feature pack.</li>
+                    <li>How is the gRPC feature pack structured?</li>
+                </ul>
             </div>
         </div>
     </div>

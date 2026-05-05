@@ -425,6 +425,69 @@ header {
     }
 }
 
+.prompts {
+    padding: 64px 0;
+    border-top: 1px solid var(--border);
+}
+
+.prompts-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prompts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.prompts-category {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+}
+
+.prompts-category-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.prompts-list {
+    list-style: none;
+}
+
+.prompts-list li {
+    font-size: 0.8rem;
+    padding: 6px 0;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.prompts-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.prompts-list li::before {
+    content: "\203A";
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .prompts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .install {
     padding: 64px 0;
     border-top: 1px solid var(--border);
