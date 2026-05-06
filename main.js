@@ -49,8 +49,8 @@
         const btn = e.target.closest(".copy-btn");
         if (!btn) return;
         const text = btn.getAttribute("data-copy");
+        const original = btn.textContent;
         navigator.clipboard.writeText(text).then(function () {
-            const original = btn.textContent;
             btn.textContent = "Copied!";
             setTimeout(function () { btn.textContent = original; }, 1500);
         }).catch(function () {

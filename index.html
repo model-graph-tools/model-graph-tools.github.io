@@ -8,11 +8,20 @@
             name="description"
             content="Parse, graph, search, and compare WildFly's management model across versions and feature packs."
         />
+        <meta property="og:title" content="Model Graph Tools" />
+        <meta property="og:description" content="Parse, graph, search, and compare WildFly's management model across versions and feature packs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://model-graph-tools.github.io" />
+        <meta property="og:image" content="https://model-graph-tools.github.io/icon.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Model Graph Tools" />
+        <meta name="twitter:description" content="Parse, graph, search, and compare WildFly's management model across versions and feature packs." />
         <link rel="icon" type="image/png" href="icon.png" />
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <header>
+        <a href="#main" class="skip-link">Skip to content</a>
+        <header aria-label="Main navigation">
             <a href="/" class="logo mono">Model Graph Tools</a>
             <div class="header-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -28,6 +37,7 @@
                 </a>
             </div>
         </header>
+        <main id="main">
         <section class="hero container">
             <div class="hero-text">
                 <div class="hero-label mono">MODEL GRAPH TOOLS</div>
@@ -36,6 +46,7 @@
                     Ask questions about WildFly's management model from any AI agent &mdash; search, compare, and
                     explore across versions and feature packs.
                 </p>
+                <p class="hero-versions">Supports all WildFly versions starting with 10, plus feature packs like AI, gRPC, GraphQL, and MyFaces.</p>
                 <div class="hero-actions">
                     <a href="#install" class="btn btn-primary">Get Started</a>
                     <a
@@ -138,7 +149,7 @@
                     <div class="card">
                         <div class="card-label green mono">JAVA CLI</div>
                         <div class="card-name">Analyzer</div>
-                        <p class="card-desc">Parse the management model and store it as a Neo4j graph.</p>
+                        <p class="card-desc">Parse the management model and store it as a Neo4j graph. Used internally by mgt &mdash; only needed for custom analysis.</p>
                         <ul class="card-features">
                             <li>Live server or doc ZIP</li>
                             <li>Full resource tree</li>
@@ -162,7 +173,7 @@
                         <ul class="card-features">
                             <li>Analyze WildFly and feature packs</li>
                             <li>Start/stop model containers</li>
-                            <li>Open the Neo4J browser</li>
+                            <li>Browse with Neo4j (<span class="mono">mgt browse &lt;version&gt;</span>)</li>
                         </ul>
                         <div class="card-terminal mono">
                             <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
@@ -215,9 +226,9 @@
                     Use natural language or the <span class="mono">/mgt:model</span> slash command in Claude Code. The
                     skill also activates automatically in any MCP&#8209;compatible agent.
                 </p>
-                <div class="prompts-grid">
-                    <div class="prompts-category">
-                        <div class="prompts-category-title">Browse &amp; Search</div>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="content-card-title">Browse &amp; Search</div>
                         <ul class="prompts-list mono">
                             <li>How do I add a new datasource?</li>
                             <li>How does the logging subsystem work?</li>
@@ -225,16 +236,16 @@
                             <li>Tell me more about credential stores.</li>
                         </ul>
                     </div>
-                    <div class="prompts-category">
-                        <div class="prompts-category-title">Compare Versions</div>
+                    <div class="content-card">
+                        <div class="content-card-title">Compare Versions</div>
                         <ul class="prompts-list mono">
                             <li>Compare the last two versions of WildFly.</li>
                             <li>Which attributes have changed?</li>
                             <li>Compare the undertow subsystem between WildFly 12 and now.</li>
                         </ul>
                     </div>
-                    <div class="prompts-category">
-                        <div class="prompts-category-title">Stability &amp; Deprecation</div>
+                    <div class="content-card">
+                        <div class="content-card-title">Stability &amp; Deprecation</div>
                         <ul class="prompts-list mono">
                             <li>Show me how stability levels are used.</li>
                             <li>Are there any community features?</li>
@@ -242,8 +253,8 @@
                             <li>What resources have been deprecated recently?</li>
                         </ul>
                     </div>
-                    <div class="prompts-category">
-                        <div class="prompts-category-title">Feature Packs</div>
+                    <div class="content-card">
+                        <div class="content-card-title">Feature Packs</div>
                         <ul class="prompts-list mono">
                             <li>What resources does the AI feature pack provide?</li>
                             <li>How is the gRPC feature pack structured?</li>
@@ -256,6 +267,12 @@
         <section class="section install" id="install">
             <div class="container">
                 <h2 class="section-title">Get Started</h2>
+                <p class="install-prereq">
+                    Requires
+                    <a href="https://www.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> or
+                    <a href="https://podman.io/get-started" target="_blank" rel="noopener">Podman</a>
+                    to run model database containers.
+                </p>
                 <div class="install-grid">
                     <div class="install-group">
                         <div class="install-group-title">mgt CLI</div>
@@ -316,6 +333,40 @@
                 </div>
             </div>
         </section>
+        <section class="section faq">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="content-card-title">What are the system requirements?</div>
+                        <p class="faq-answer">
+                            Docker or Podman to run the model database containers. Each version uses roughly 2 GB of disk space.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">Can I run multiple versions at once?</div>
+                        <p class="faq-answer">
+                            Yes. Each version runs in its own container, so you can start several in parallel.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">How do I access the raw graph?</div>
+                        <p class="faq-answer">
+                            Run <code class="mono">mgt browse &lt;version&gt;</code> to open the Neo4j browser, where you
+                            can write and execute Cypher queries directly.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">Where are the container images stored?</div>
+                        <p class="faq-answer">
+                            On <a href="https://quay.io/repository/modelgraphtools/model" target="_blank" rel="noopener">quay.io/modelgraphtools/model</a>.
+                            They are pulled automatically when you start a version for the first time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
         <footer>
             <div class="container">
                 <span class="mono">Model Graph Tools</span>
