@@ -556,6 +556,11 @@ header {
 
 .card-terminal .prompt { color: var(--tier-color-bright); }
 
+.card-links {
+    display: flex;
+    gap: var(--space-sm-md);
+}
+
 .card-link {
     font-size: var(--font-base);
 }
