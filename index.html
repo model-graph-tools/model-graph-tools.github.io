@@ -149,7 +149,7 @@
                     <div class="card" data-color="green">
                         <div class="card-label label-mono mono">JAVA CLI</div>
                         <div class="card-name">Analyzer</div>
-                        <p class="card-desc">Parse the management model and store it as a Neo4j graph. Used internally by mgt &mdash; only needed for custom analysis.</p>
+                        <p class="card-desc">Parse the management model and store it as a Neo4j graph. Used internally by <code>mgt</code> &mdash; only needed for custom analysis.</p>
                         <ul class="card-features">
                             <li>Live server or doc ZIP</li>
                             <li>Full resource tree</li>
@@ -173,7 +173,7 @@
                         <ul class="card-features">
                             <li>Analyze WildFly and feature packs</li>
                             <li>Start/stop model containers</li>
-                            <li>Browse with Neo4j (<span class="mono">mgt browse &lt;version&gt;</span>)</li>
+                            <li>Browse with Neo4j (<code>mgt browse &lt;version&gt;</code>)</li>
                         </ul>
                         <div class="card-terminal mono">
                             <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
@@ -232,7 +232,7 @@
             <div class="container">
                 <h2 class="section-title">What You Can Ask</h2>
                 <p class="prompts-subtitle">
-                    Use natural language or the <span class="mono">/mgt:model</span> slash command in Claude Code. The
+                    Use natural language or the <code>/mgt:model</code> slash command in Claude Code. The
                     skill also activates automatically in any MCP&#8209;compatible agent.
                 </p>
                 <div class="content-grid">
@@ -358,7 +358,7 @@
                         <p class="next-steps-example mono">&rsaquo; How do I add a datasource in WildFly 39?</p>
                         <p class="install-note">
                             See <a href="#prompts">What You Can Ask</a> for example queries, or browse the model
-                            interactively with <span class="mono">mgt browse 39</span>.
+                            interactively with <code>mgt browse 39</code>.
                         </p>
                     </div>
                 </div>
@@ -369,10 +369,40 @@
                 <h2 class="section-title">FAQ</h2>
                 <div class="content-grid">
                     <div class="content-card">
+                        <div class="content-card-title">Do I need a running WildFly instance?</div>
+                        <p class="faq-answer">
+                            No. The management model is pre-extracted and stored in the graph database. You can
+                            explore any WildFly version without installing or running a server.
+                        </p>
+                    </div>
+                    <div class="content-card">
                         <div class="content-card-title">What are the system requirements?</div>
                         <p class="faq-answer">
                             Docker or Podman to run the model database containers. Node for the MCP server.
                             Each version uses roughly 1.2 GB of disk space.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">Which WildFly versions are available?</div>
+                        <p class="faq-answer">
+                            All major releases from WildFly 10 onwards, plus selected feature packs like the AI
+                            subsystem. Run <code class="mono">mgt versions</code> and
+                            <code class="mono">mgt feature-packs</code> to see the full list.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">What gets downloaded when I start a version?</div>
+                        <p class="faq-answer">
+                            A container image (~400 MB compressed) containing a Neo4j database pre-loaded with the
+                            full management model for that WildFly version. After the first pull, subsequent starts
+                            are instant.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">Where are the container images stored?</div>
+                        <p class="faq-answer">
+                            On <a href="https://quay.io/repository/modelgraphtools/model" target="_blank" rel="noopener">quay.io/modelgraphtools/model</a>.
+                            They are pulled automatically when you start a version for the first time.
                         </p>
                     </div>
                     <div class="content-card">
@@ -382,17 +412,24 @@
                         </p>
                     </div>
                     <div class="content-card">
+                        <div class="content-card-title">Can I use this offline?</div>
+                        <p class="faq-answer">
+                            Yes, once a version's container image has been pulled. The graph database runs entirely
+                            on your machine with no external network calls.
+                        </p>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-card-title">Is the data kept between sessions?</div>
+                        <p class="faq-answer">
+                            The graph data is read-only and baked into each container image. Stopping and restarting
+                            a version gives you the same data every time.
+                        </p>
+                    </div>
+                    <div class="content-card">
                         <div class="content-card-title">How do I access the raw graph?</div>
                         <p class="faq-answer">
                             Run <code class="mono">mgt browse &lt;version&gt;</code> to open the Neo4j browser, where you
                             can write and execute Cypher queries directly.
-                        </p>
-                    </div>
-                    <div class="content-card">
-                        <div class="content-card-title">Where are the container images stored?</div>
-                        <p class="faq-answer">
-                            On <a href="https://quay.io/repository/modelgraphtools/model" target="_blank" rel="noopener">quay.io/modelgraphtools/model</a>.
-                            They are pulled automatically when you start a version for the first time.
                         </p>
                     </div>
                 </div>

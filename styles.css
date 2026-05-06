@@ -28,6 +28,8 @@
     --purple: #a855f7;
     --purple-bg: #faf5ff;
     --purple-text: #9333ea;
+    --code-bg: #f0f0f0;
+    --code-border: #d4d4d4;
 
     /* Spacing */
     --space-xs: 4px;
@@ -79,6 +81,8 @@
     --blue-text: #79c0ff;
     --purple-bg: #0d1117;
     --purple-text: #d2a8ff;
+    --code-bg: #1c2128;
+    --code-border: #30363d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,6 +103,8 @@
         --blue-text: #79c0ff;
         --purple-bg: #0d1117;
         --purple-text: #d2a8ff;
+        --code-bg: #1c2128;
+        --code-border: #30363d;
     }
 }
 
@@ -122,6 +128,15 @@ body {
     transition:
         background 0.2s,
         color 0.2s;
+}
+
+code {
+    font-size: 0.9em;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    white-space: nowrap;
 }
 
 /* ──────────────────────────────────────
@@ -631,10 +646,6 @@ header {
     line-height: 1.6;
 }
 
-.faq-answer code {
-    font-size: var(--font-sm);
-}
-
 
 /* ──────────────────────────────────────
    Install
@@ -752,6 +763,11 @@ header {
 
 .code-block code,
 .code-block-line code {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: inherit;
     flex: 1;
     white-space: nowrap;
     overflow-x: auto;
