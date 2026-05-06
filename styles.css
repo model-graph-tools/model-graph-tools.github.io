@@ -637,8 +637,10 @@ header {
 
 .install-grid {
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
     gap: var(--space-2xl);
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .install-group {
@@ -661,6 +663,34 @@ header {
     color: var(--text-secondary);
     margin-bottom: var(--space-2xl);
 }
+
+.install-note {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-md);
+    line-height: 1.5;
+}
+
+.next-steps-example {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    padding: var(--space-sm-md) var(--space-lg-xl);
+    background: var(--terminal-bg);
+    border-radius: var(--radius-md);
+    color: var(--terminal-text);
+}
+
+.next-steps-example::first-letter {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.next-steps-optional {
+    font-weight: 400;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
 
 .tabs {
     display: flex;
@@ -837,7 +867,4 @@ footer .footer-sep {
         grid-template-columns: 1fr;
     }
 
-    .install-grid {
-        flex-direction: column;
-    }
 }

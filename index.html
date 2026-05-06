@@ -219,7 +219,7 @@
                 </div>
             </div>
         </section>
-        <section class="section prompts">
+        <section class="section prompts" id="prompts">
             <div class="container">
                 <h2 class="section-title">What You Can Ask</h2>
                 <p class="prompts-subtitle">
@@ -272,6 +272,7 @@
                     <a href="https://www.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> or
                     <a href="https://podman.io/get-started" target="_blank" rel="noopener">Podman</a>
                     to run model database containers.
+                    <a href="https://nodejs.org/" target="_blank" rel="noopener">Node</a> for the MCP server.
                 </p>
                 <div class="install-grid">
                     <div class="install-group">
@@ -308,7 +309,7 @@
                         </div>
                     </div>
                     <div class="install-group">
-                        <div class="install-group-title">Claude Plugin</div>
+                        <div class="install-group-title">Claude Code Plugin</div>
                         <div class="code-block standalone-code-block code-block-multi mono">
                             <div class="code-block-line">
                                 <code
@@ -329,6 +330,27 @@
                                 </button>
                             </div>
                         </div>
+                        <p class="install-note">
+                            Using a different agent? The
+                            <a href="https://github.com/model-graph-tools/claude-plugin" target="_blank" rel="noopener">MCP server</a>
+                            works with any MCP&#8209;compatible client &mdash; Cursor, Windsurf, Copilot, Gemini CLI, and others.
+                        </p>
+                    </div>
+                    <div class="install-group">
+                        <div class="install-group-title">Start a Model Database <span class="next-steps-optional">(optional)</span></div>
+                        <div class="code-block standalone-code-block mono">
+                            <code>mgt start 39</code>
+                            <button class="copy-btn" data-copy="mgt start 39">Copy</button>
+                        </div>
+                        <p class="install-note">The MCP server starts containers automatically when needed. Use this to pre&#8209;load a version.</p>
+                    </div>
+                    <div class="install-group">
+                        <div class="install-group-title">Ask Your AI Agent</div>
+                        <p class="next-steps-example mono">&rsaquo; How do I add a datasource in WildFly 39?</p>
+                        <p class="install-note">
+                            See <a href="#prompts">What You Can Ask</a> for example queries, or browse the model
+                            interactively with <span class="mono">mgt browse 39</span>.
+                        </p>
                     </div>
                 </div>
             </div>
