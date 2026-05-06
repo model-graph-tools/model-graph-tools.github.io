@@ -440,7 +440,7 @@ header {
     color: var(--terminal-text);
     line-height: 1.7;
 
-    a {
+    a:not(.btn) {
         color: var(--terminal-text);
         text-decoration: none;
 
