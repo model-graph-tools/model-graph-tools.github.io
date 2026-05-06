@@ -31,8 +31,11 @@
 
     /* Spacing */
     --space-xs: 4px;
+    --space-xs-sm: 6px;
     --space-sm: 8px;
+    --space-sm-md: 10px;
     --space-md: 12px;
+    --space-md-lg: 14px;
     --space-lg: 16px;
     --space-lg-xl: 20px;
     --space-xl: 24px;
@@ -48,13 +51,18 @@
 
     /* Typography */
     --font-size-base: 18px;
+    --font-2xs: 0.65rem;
+    --font-xs: 0.7rem;
+    --font-sm: 0.8rem;
+    --font-base: 0.85rem;
+    --font-md: 0.9rem;
+    --font-lg: 0.95rem;
 
     /* Layout */
     --max-width: 1280px;
 }
 
-[data-theme="dark"],
-:root:not([data-theme="light"]) {
+[data-theme="dark"] {
     --bg: #0d1117;
     --bg-secondary: #161b22;
     --text: #c9d1d9;
@@ -71,6 +79,27 @@
     --blue-text: #79c0ff;
     --purple-bg: #0d1117;
     --purple-text: #d2a8ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --bg: #0d1117;
+        --bg-secondary: #161b22;
+        --text: #c9d1d9;
+        --text-secondary: #8b949e;
+        --border: #30363d;
+        --accent: #e53e3e;
+        --accent-hover: #f56565;
+        --terminal-bg: #161b22;
+        --red-bg: #0d1117;
+        --red-text: #f56565;
+        --green-bg: #0d1117;
+        --green-text: #7ee787;
+        --blue-bg: #0d1117;
+        --blue-text: #79c0ff;
+        --purple-bg: #0d1117;
+        --purple-text: #d2a8ff;
+    }
 }
 
 html {
@@ -107,7 +136,7 @@ body {
     color: #fff;
     padding: var(--space-sm) var(--space-lg);
     border-radius: var(--radius-md);
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     text-decoration: none;
     z-index: 100;
 }
@@ -129,6 +158,29 @@ body {
 .mono {
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
+
+.label-mono {
+    font-size: var(--font-xs);
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+[data-color="purple"] { --tier-color: var(--purple-text); --tier-color-bright: var(--purple); }
+[data-color="red"]    { --tier-color: var(--accent);       --tier-color-bright: var(--accent); }
+[data-color="green"]  { --tier-color: var(--green-text);   --tier-color-bright: var(--green); }
+[data-color="blue"]   { --tier-color: var(--blue-text);    --tier-color-bright: var(--blue); }
 
 .section {
     padding: var(--space-4xl) 0;
@@ -184,10 +236,10 @@ header {
     background: none;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 6px 10px;
+    padding: var(--space-xs-sm) var(--space-sm-md);
     cursor: pointer;
     color: var(--text);
-    font-size: 0.778rem;
+    font-size: var(--font-sm);
     transition: border-color 0.2s;
 }
 
@@ -198,10 +250,10 @@ header {
 .github-link {
     color: var(--text);
     text-decoration: none;
-    font-size: 0.778rem;
+    font-size: var(--font-sm);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: var(--space-xs-sm);
 }
 
 .github-link:hover {
@@ -225,7 +277,7 @@ header {
 }
 
 .hero-label {
-    font-size: 0.75rem;
+    font-size: var(--font-xs);
     letter-spacing: 2px;
     color: var(--accent);
     margin-bottom: var(--space-md);
@@ -239,13 +291,13 @@ header {
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* unique size, no token */
     color: var(--text-secondary);
     margin-bottom: var(--space-xl);
 }
 
 .hero-versions {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     color: var(--text-secondary);
     margin-bottom: var(--space-xl);
 }
@@ -257,9 +309,9 @@ header {
 
 .btn {
     display: inline-block;
-    padding: 10px var(--space-xl);
+    padding: var(--space-sm-md) var(--space-xl);
     border-radius: var(--radius-md);
-    font-size: 0.95rem;
+    font-size: var(--font-lg);
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
@@ -298,7 +350,7 @@ header {
     background: var(--terminal-bg);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    font-size: 0.9rem;
+    font-size: var(--font-md);
     line-height: 1.7;
 }
 
@@ -306,7 +358,6 @@ header {
     color: var(--terminal-prompt);
 }
 
-.hero-terminal .cmd,
 .card-terminal .cmd {
     color: var(--terminal-text);
 }
@@ -345,11 +396,8 @@ header {
 }
 
 .architecture-tier-label {
-    font-size: 0.7rem;
-    letter-spacing: 1.5px;
     margin-bottom: var(--space-md);
     color: var(--tier-color);
-    font-weight: 600;
 }
 
 .architecture-tier-content {
@@ -366,14 +414,14 @@ header {
 }
 
 .architecture-inner-name {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: var(--space-xs-sm);
     color: var(--terminal-text);
 }
 
 .architecture-inner-detail {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     color: var(--terminal-text);
     line-height: 1.7;
 
@@ -393,11 +441,6 @@ header {
     padding: var(--space-sm) 0;
 }
 
-.architecture-tier.purple { --tier-color: var(--purple-text); }
-.architecture-tier.red    { --tier-color: var(--accent); }
-.architecture-tier.blue   { --tier-color: var(--blue-text); }
-.architecture-tier.green  { --tier-color: var(--green-text); }
-
 .architecture-tier.dashed {
     border-style: dashed;
     opacity: 0.75;
@@ -410,7 +453,7 @@ header {
     right: var(--space-lg);
     background: var(--bg-secondary);
     padding: 0 var(--space-sm);
-    font-size: 0.65rem;
+    font-size: var(--font-2xs);
     letter-spacing: 1px;
     color: var(--text-secondary);
     font-weight: 600;
@@ -433,7 +476,7 @@ header {
 }
 
 .schema-caption {
-    font-size: 0.9rem;
+    font-size: var(--font-md);
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
 }
@@ -467,14 +510,9 @@ header {
 }
 
 .card-label {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
     margin-bottom: var(--space-xs);
+    color: var(--tier-color);
 }
-
-.card-label.green  { color: var(--green-text); }
-.card-label.red    { color: var(--accent); }
-.card-label.purple { color: var(--purple-text); }
 
 .card-name {
     font-size: 1.25rem;
@@ -483,7 +521,7 @@ header {
 }
 
 .card-desc {
-    font-size: 0.9rem;
+    font-size: var(--font-md);
     color: var(--text-secondary);
     margin-bottom: var(--space-lg);
 }
@@ -495,7 +533,7 @@ header {
 }
 
 .card-features li {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     padding: var(--space-xs) 0;
     color: var(--text);
 }
@@ -509,18 +547,17 @@ header {
 .card-terminal {
     background: var(--terminal-bg);
     border-radius: var(--radius-md);
-    padding: 10px 14px;
-    font-size: 0.8rem;
+    padding: var(--space-sm-md) var(--space-md-lg);
+    font-size: var(--font-sm);
     margin-bottom: var(--space-md);
     overflow-x: auto;
     white-space: nowrap;
 }
 
-.card-terminal.green .prompt  { color: var(--green); }
-.card-terminal.purple .prompt { color: var(--purple); }
+.card-terminal .prompt { color: var(--tier-color-bright); }
 
 .card-link {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
 }
 
 /* ──────────────────────────────────────
@@ -530,7 +567,7 @@ header {
 .prompts-subtitle {
     text-align: center;
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: var(--font-lg);
     margin-bottom: 2rem;
     max-width: 640px;
     margin-left: auto;
@@ -550,7 +587,7 @@ header {
 }
 
 .content-card-title {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     font-weight: 600;
     margin-bottom: var(--space-md);
     color: var(--text);
@@ -561,8 +598,8 @@ header {
 }
 
 .prompts-list li {
-    font-size: 0.8rem;
-    padding: 6px 0;
+    font-size: var(--font-sm);
+    padding: var(--space-xs-sm) 0;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border);
 }
@@ -584,13 +621,13 @@ header {
    ────────────────────────────────────── */
 
 .faq-answer {
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     color: var(--text-secondary);
     line-height: 1.6;
 }
 
 .faq-answer code {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
 }
 
 
@@ -620,7 +657,7 @@ header {
 
 .install-prereq {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: var(--font-md);
     color: var(--text-secondary);
     margin-bottom: var(--space-2xl);
 }
@@ -633,7 +670,7 @@ header {
 
 .tab {
     padding: var(--space-sm) var(--space-lg);
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
@@ -668,8 +705,8 @@ header {
 .code-block {
     background: var(--terminal-bg);
     border-radius: 0 0 var(--radius-md) var(--radius-md);
-    padding: 14px 18px;
-    font-size: 0.85rem;
+    padding: var(--space-md-lg) var(--space-lg-xl);
+    font-size: var(--font-base);
     color: var(--terminal-text);
     display: flex;
     align-items: center;
@@ -691,8 +728,8 @@ header {
     border: 1px solid var(--terminal-muted);
     border-radius: var(--radius-sm);
     color: var(--terminal-muted);
-    padding: var(--space-xs) 10px;
-    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm-md);
+    font-size: var(--font-xs);
     cursor: pointer;
     white-space: nowrap;
     transition:
@@ -731,7 +768,7 @@ footer {
     border-top: 1px solid var(--border);
     padding: var(--space-2xl) var(--space-xl);
     text-align: center;
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     color: var(--text-secondary);
 }
 

@@ -24,10 +24,12 @@ Open `index.html` in a browser. There is no dev server, build tool, or package m
 
 ## Design System
 
-The site uses CSS custom properties for theming. All color tokens are in `:root` (light) and `[data-theme="dark"]` (dark) blocks at the top of the `<style>` tag. The accent color is `#e53e3e` (red). Max content width is `1080px`.
+The site uses CSS custom properties for theming. All color tokens are in `:root` (light) and `[data-theme="dark"]` (dark) blocks at the top of `styles.css`. The accent color is `#e53e3e` (red). Max content width is `1280px`.
 
 Key CSS conventions:
 - `.mono` class for monospace font
-- `.pipeline-box.{red,green,blue,amber}` for the architecture diagram colors
-- `.card-label.{green,red,purple}` and `.card-terminal.{green,purple}` for ecosystem card variants
+- `.label-mono` class for shared label styling (small mono text with letter-spacing)
+- `data-color="{red,green,blue,purple}"` attributes for color variants (architecture tiers, cards)
+- Font-size tokens: `--font-2xs` through `--font-lg`
+- Spacing tokens: `--space-xs` through `--space-5xl`, plus `--space-xs-sm`, `--space-sm-md`, `--space-md-lg`
 - Responsive breakpoint at `768px` switches layouts from row to column
