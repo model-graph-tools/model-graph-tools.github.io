@@ -10,21 +10,17 @@
         set(key, val) { try { localStorage.setItem(key, val); } catch { /* private browsing */ } }
     };
 
-    const getPreferred = () => {
-        const stored = safeStorage.get(STORAGE_KEY);
-        if (stored) return stored;
-        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    };
+    const isDark = () => html.classList.contains("dark");
 
     const applyTheme = (theme) => {
-        html.setAttribute("data-theme", theme);
+        html.classList.toggle("dark", theme === "dark");
         icon.textContent = theme === "dark" ? "☀" : "☽";
     };
 
-    applyTheme(getPreferred());
+    icon.textContent = isDark() ? "☀" : "☽";
 
     toggle.addEventListener("click", () => {
-        const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        const next = isDark() ? "light" : "dark";
         safeStorage.set(STORAGE_KEY, next);
         applyTheme(next);
     });

@@ -65,12 +65,7 @@
     --header-height: 60px;
 }
 
-/* [data-theme="dark"] and the @media fallback intentionally duplicate
-   the same overrides: one handles the explicit toggle, the other the
-   system-preference default. Without a preprocessor there is no clean
-   way to share them — tracked for consolidation. */
-
-[data-theme="dark"] {
+.dark {
     --bg: #0d1117;
     --bg-secondary: #161b22;
     --text: #c9d1d9;
@@ -89,29 +84,6 @@
     --purple-text: #d2a8ff;
     --code-bg: #1c2128;
     --code-border: #30363d;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --bg: #0d1117;
-        --bg-secondary: #161b22;
-        --text: #c9d1d9;
-        --text-secondary: #8b949e;
-        --border: #30363d;
-        --accent: #e53e3e;
-        --accent-hover: #f56565;
-        --terminal-bg: #161b22;
-        --red-bg: #0d1117;
-        --red-text: #f56565;
-        --green-bg: #0d1117;
-        --green-text: #7ee787;
-        --blue-bg: #0d1117;
-        --blue-text: #79c0ff;
-        --purple-bg: #0d1117;
-        --purple-text: #d2a8ff;
-        --code-bg: #1c2128;
-        --code-border: #30363d;
-    }
 }
 
 html {
@@ -756,7 +728,7 @@ header {
     height: auto;
 }
 
-[data-theme="dark"] .schema-img {
+.dark .schema-img {
     filter: invert(0.85) hue-rotate(180deg) saturate(1.2);
 }
 
