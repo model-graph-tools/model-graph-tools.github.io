@@ -286,41 +286,9 @@
                     <a href="https://podman.io/get-started" target="_blank" rel="noopener">Podman</a>
                     to run model database containers.
                     <a href="https://nodejs.org/" target="_blank" rel="noopener">Node</a> for the MCP server.
+                    The <code>mgt</code> CLI is bundled automatically.
                 </p>
                 <div class="install-grid">
-                    <div class="install-group">
-                        <div class="install-group-title">mgt CLI</div>
-                        <div class="tabs" role="tablist">
-                            <button class="tab active" role="tab" id="tab-btn-curl" data-tab="curl" aria-selected="true" aria-controls="tab-curl" tabindex="0">curl</button>
-                            <button class="tab" role="tab" id="tab-btn-brew" data-tab="brew" aria-selected="false" aria-controls="tab-brew" tabindex="-1">Homebrew</button>
-                            <button class="tab" role="tab" id="tab-btn-cargo" data-tab="cargo" aria-selected="false" aria-controls="tab-cargo" tabindex="-1">Cargo</button>
-                        </div>
-                        <div class="tab-content active" id="tab-curl" role="tabpanel" aria-labelledby="tab-btn-curl" tabindex="0">
-                            <div class="code-block mono">
-                                <code>curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh</code>
-                                <button
-                                    class="copy-btn"
-                                    data-copy="curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh"
-                                >
-                                    Copy
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="tab-brew" role="tabpanel" aria-labelledby="tab-btn-brew" tabindex="0">
-                            <div class="code-block mono">
-                                <code>brew tap hpehl/tap &amp;&amp; brew install mgt</code>
-                                <button class="copy-btn" data-copy="brew tap hpehl/tap && brew install mgt">
-                                    Copy
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="tab-cargo" role="tabpanel" aria-labelledby="tab-btn-cargo" tabindex="0">
-                            <div class="code-block mono">
-                                <code>cargo install mgt</code>
-                                <button class="copy-btn" data-copy="cargo install mgt">Copy</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="install-group">
                         <div class="install-group-title">Claude Code Plugin</div>
                         <div class="code-block standalone-code-block code-block-multi mono">
@@ -364,6 +332,40 @@
                             See <a href="#prompts">What You Can Ask</a> for example queries, or browse the model
                             interactively with <code>mgt browse 39</code>.
                         </p>
+                    </div>
+                    <div class="install-group">
+                        <div class="install-group-title">Standalone mgt CLI <span class="next-steps-optional">(optional)</span></div>
+                        <div class="tabs" role="tablist">
+                            <button class="tab active" role="tab" id="tab-btn-curl" data-tab="curl" aria-selected="true" aria-controls="tab-curl" tabindex="0">curl</button>
+                            <button class="tab" role="tab" id="tab-btn-brew" data-tab="brew" aria-selected="false" aria-controls="tab-brew" tabindex="-1">Homebrew</button>
+                            <button class="tab" role="tab" id="tab-btn-cargo" data-tab="cargo" aria-selected="false" aria-controls="tab-cargo" tabindex="-1">Cargo</button>
+                        </div>
+                        <div class="tab-content active" id="tab-curl" role="tabpanel" aria-labelledby="tab-btn-curl" tabindex="0">
+                            <div class="code-block mono">
+                                <code>curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh</code>
+                                <button
+                                    class="copy-btn"
+                                    data-copy="curl -fsSL https://model-graph-tools.github.io/mgt/install.sh | sh"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-brew" role="tabpanel" aria-labelledby="tab-btn-brew" tabindex="0">
+                            <div class="code-block mono">
+                                <code>brew tap hpehl/tap &amp;&amp; brew install mgt</code>
+                                <button class="copy-btn" data-copy="brew tap hpehl/tap && brew install mgt">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-cargo" role="tabpanel" aria-labelledby="tab-btn-cargo" tabindex="0">
+                            <div class="code-block mono">
+                                <code>cargo install mgt</code>
+                                <button class="copy-btn" data-copy="cargo install mgt">Copy</button>
+                            </div>
+                        </div>
+                        <p class="install-note">The MCP server bundles <code>mgt</code> automatically. Install standalone only if you want to use <code>mgt</code> directly from the command line.</p>
                     </div>
                 </div>
             </div>
