@@ -5,8 +5,13 @@
     const html = document.documentElement;
     const copyStatus = document.getElementById("copyStatus");
 
+    const safeStorage = {
+        get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+        set(key, val) { try { localStorage.setItem(key, val); } catch { /* private browsing */ } }
+    };
+
     const getPreferred = () => {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = safeStorage.get(STORAGE_KEY);
         if (stored) return stored;
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     };
@@ -20,8 +25,14 @@
 
     toggle.addEventListener("click", () => {
         const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        localStorage.setItem(STORAGE_KEY, next);
+        safeStorage.set(STORAGE_KEY, next);
         applyTheme(next);
+    });
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        if (!safeStorage.get(STORAGE_KEY)) {
+            applyTheme(e.matches ? "dark" : "light");
+        }
     });
 
     document.querySelectorAll(".tabs").forEach((tabGroup) => {
@@ -74,24 +85,30 @@
         });
     });
 
+    let copyTimeout = null;
+
     document.addEventListener("click", (e) => {
         const btn = e.target.closest(".copy-btn");
         if (!btn) return;
         const text = btn.getAttribute("data-copy");
         const original = btn.textContent;
+
+        if (copyTimeout) {
+            clearTimeout(copyTimeout);
+            copyTimeout = null;
+        }
+
         navigator.clipboard.writeText(text).then(() => {
             btn.textContent = "Copied!";
             copyStatus.textContent = "Copied to clipboard";
-            setTimeout(() => {
-                btn.textContent = original;
-                copyStatus.textContent = "";
-            }, 1500);
         }).catch(() => {
             btn.textContent = "Failed";
             copyStatus.textContent = "Copy failed";
-            setTimeout(() => {
+        }).finally(() => {
+            copyTimeout = setTimeout(() => {
                 btn.textContent = original;
                 copyStatus.textContent = "";
+                copyTimeout = null;
             }, 1500);
         });
     });

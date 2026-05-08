@@ -21,8 +21,15 @@
     </head>
     <body>
         <a href="#main" class="skip-link">Skip to content</a>
-        <header aria-label="Main navigation">
+        <header>
             <a href="/" class="logo mono">Model Graph Tools</a>
+            <nav class="header-nav" aria-label="Page sections">
+                <a href="#prompts">What You Can Ask</a>
+                <a href="#install">Get Started</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#ecosystem">Ecosystem</a>
+                <a href="#faq">FAQ</a>
+            </nav>
             <div class="header-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                     <span id="themeIcon">&#9789;</span>
@@ -63,169 +70,6 @@
                 <div class="hero-answer">Required: jndi-name, driver-name</div>
                 <div class="hero-answer">62 optional attributes including</div>
                 <div class="hero-answer muted">connection-url, pool-size, validation&hellip;</div>
-            </div>
-        </section>
-        <section class="section diagram">
-            <div class="container">
-                <h2 class="section-title">How It Works</h2>
-                <div class="architecture">
-                    <div class="architecture-tier" data-color="purple">
-                        <div class="architecture-tier-label label-mono mono">AGENT</div>
-                        <div class="architecture-tier-content">
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-name">Skill</div>
-                                <div class="architecture-inner-detail mono">
-                                    <span class="prompt">&gt;</span> How is TLS configured?
-                                </div>
-                            </div>
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-name">MCP Server</div>
-                                <div class="architecture-inner-detail mono">
-                                    <div>Run mgt subcommands</div>
-                                    <div>Execute Cypher queries</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="architecture-arrow">&darr;</div>
-                    <div class="architecture-tier" data-color="red">
-                        <div class="architecture-tier-label label-mono mono">CLI</div>
-                        <div class="architecture-tier-content">
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-name">mgt</div>
-                                <div class="architecture-inner-detail mono">
-                                    <div><span class="prompt">$</span> mgt start 39</div>
-                                    <div><span class="prompt">$</span> mgt versions</div>
-                                    <div><span class="prompt">$</span> mgt ps</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="architecture-arrow">&darr;</div>
-                    <div class="architecture-tier" data-color="blue">
-                        <div class="architecture-tier-label label-mono mono">MODEL</div>
-                        <div class="architecture-tier-content">
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-name">Model Database Images</div>
-                                <div class="architecture-inner-detail mono">
-                                    <a href="https://quay.io/repository/modelgraphtools/model" target="_blank">quay.io/modelgraphtools/model</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="architecture-arrow">&uarr;</div>
-                    <div class="architecture-tier dashed" data-color="green">
-                        <span class="architecture-tier-badge mono">BUILD TIME</span>
-                        <div class="architecture-tier-label label-mono mono">ANALYZER</div>
-                        <div class="architecture-tier-content">
-                            <div class="architecture-inner">
-                                <div class="architecture-inner-name">Analyzer</div>
-                                <div class="architecture-inner-detail mono">
-                                    <div>Parse management model</div>
-                                    <div>Populate model database</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="schema-container">
-                    <h3 class="schema-title">Model Database</h3>
-                    <p class="schema-caption">
-                        The management model is stored as a graph in a Neo4j database. It contains nodes and relationships for
-                        resources, attributes, operations, capabilities, and more.
-                    </p>
-                    <img
-                        src="schema.svg"
-                        alt="Graph schema showing resource, attribute, operation, capability, and parameter nodes with their relationships"
-                        class="schema-img"
-                    />
-                </div>
-            </div>
-        </section>
-        <section class="section ecosystem">
-            <div class="container">
-                <h2 class="section-title">The Ecosystem</h2>
-                <div class="cards">
-                    <div class="card" data-color="green">
-                        <div class="card-label label-mono mono">JAVA CLI</div>
-                        <div class="card-name">Analyzer</div>
-                        <p class="card-desc">Parse the management model and store it as a Neo4j graph. Used internally by <code>mgt</code> &mdash; only needed for custom analysis.</p>
-                        <ul class="card-features">
-                            <li>Live server or doc ZIP</li>
-                            <li>Full resource tree</li>
-                            <li>Capabilities &amp; relationships</li>
-                        </ul>
-                        <div class="card-terminal mono">
-                            <span class="prompt">$</span> <span class="cmd">java -jar analyzer.jar -w localhost</span>
-                        </div>
-                        <a
-                            href="https://github.com/model-graph-tools/analyzer"
-                            class="card-link"
-                            target="_blank"
-                            rel="noopener"
-                            >View on GitHub &rarr;</a
-                        >
-                    </div>
-                    <div class="card" data-color="red">
-                        <div class="card-label label-mono mono">RUST CLI</div>
-                        <div class="card-name">mgt</div>
-                        <p class="card-desc">Orchestrate the analysis pipeline and manage model containers. Bundled with the MCP server &mdash; install standalone for direct CLI use.</p>
-                        <ul class="card-features">
-                            <li>Analyze WildFly and feature packs</li>
-                            <li>Start/stop model containers</li>
-                            <li>Browse with Neo4j (<code>mgt browse &lt;version&gt;</code>)</li>
-                        </ul>
-                        <div class="card-terminal mono">
-                            <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
-                        </div>
-                        <a
-                            href="https://github.com/model-graph-tools/tooling"
-                            class="card-link"
-                            target="_blank"
-                            rel="noopener"
-                            >View on GitHub &rarr;</a
-                        >
-                    </div>
-                    <div class="card" data-color="purple">
-                        <div class="card-label label-mono mono">MCP SERVER</div>
-                        <div class="card-name">Claude Plugin</div>
-                        <p class="card-desc">Explore the model from AI agents via MCP and agent skills.</p>
-                        <ul class="card-features">
-                            <li>Search &amp; browse resources</li>
-                            <li>Compare versions</li>
-                            <li>Run Cypher queries</li>
-                        </ul>
-                        <div class="card-terminal mono">
-                            <div>
-                                <span class="prompt">$</span>
-                                <span class="cmd"
-                                    >claude plugin marketplace add
-                                    https://github.com/model-graph-tools/claude-plugin</span
-                                >
-                            </div>
-                            <div>
-                                <span class="prompt">$</span>
-                                <span class="cmd">claude plugin install mgt@model-graph-tools</span>
-                            </div>
-                        </div>
-                        <div class="card-links">
-                            <a
-                                href="https://github.com/model-graph-tools/claude-plugin"
-                                class="card-link"
-                                target="_blank"
-                                rel="noopener"
-                                >View on GitHub &rarr;</a
-                            >
-                            <a
-                                href="https://github.com/model-graph-tools/claude-plugin#what-you-can-do"
-                                class="card-link"
-                                target="_blank"
-                                rel="noopener"
-                                >Tool reference &rarr;</a
-                            >
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         <section class="section prompts" id="prompts">
@@ -370,7 +214,170 @@
                 </div>
             </div>
         </section>
-        <section class="section faq">
+        <section class="section diagram" id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="architecture">
+                    <div class="architecture-tier" data-color="purple">
+                        <div class="architecture-tier-label label-mono mono">AGENT</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">Skill</div>
+                                <div class="architecture-inner-detail mono">
+                                    <span class="prompt">&gt;</span> How is TLS configured?
+                                </div>
+                            </div>
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">MCP Server</div>
+                                <div class="architecture-inner-detail mono">
+                                    <div>Run mgt subcommands</div>
+                                    <div>Execute Cypher queries</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="architecture-arrow">&darr;</div>
+                    <div class="architecture-tier" data-color="red">
+                        <div class="architecture-tier-label label-mono mono">CLI</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">mgt</div>
+                                <div class="architecture-inner-detail mono">
+                                    <div><span class="prompt">$</span> mgt start 39</div>
+                                    <div><span class="prompt">$</span> mgt versions</div>
+                                    <div><span class="prompt">$</span> mgt ps</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="architecture-arrow">&darr;</div>
+                    <div class="architecture-tier" data-color="blue">
+                        <div class="architecture-tier-label label-mono mono">MODEL</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">Model Database Images</div>
+                                <div class="architecture-inner-detail mono">
+                                    <a href="https://quay.io/repository/modelgraphtools/model" target="_blank" rel="noopener">quay.io/modelgraphtools/model</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="architecture-arrow">&uarr;</div>
+                    <div class="architecture-tier dashed" data-color="green">
+                        <span class="architecture-tier-badge mono">BUILD TIME</span>
+                        <div class="architecture-tier-label label-mono mono">ANALYZER</div>
+                        <div class="architecture-tier-content">
+                            <div class="architecture-inner">
+                                <div class="architecture-inner-name">Analyzer</div>
+                                <div class="architecture-inner-detail mono">
+                                    <div>Parse management model</div>
+                                    <div>Populate model database</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="schema-container">
+                    <h3 class="schema-title">Model Database</h3>
+                    <p class="schema-caption">
+                        The management model is stored as a graph in a Neo4j database. It contains nodes and relationships for
+                        resources, attributes, operations, capabilities, and more.
+                    </p>
+                    <img
+                        src="schema.svg"
+                        alt="Graph schema showing resource, attribute, operation, capability, and parameter nodes with their relationships"
+                        class="schema-img"
+                    />
+                </div>
+            </div>
+        </section>
+        <section class="section ecosystem" id="ecosystem">
+            <div class="container">
+                <h2 class="section-title">The Ecosystem</h2>
+                <div class="cards">
+                    <div class="card" data-color="green">
+                        <div class="card-label label-mono mono">JAVA CLI</div>
+                        <div class="card-name">Analyzer</div>
+                        <p class="card-desc">Parse the management model and store it as a Neo4j graph. Used internally by <code>mgt</code> &mdash; only needed for custom analysis.</p>
+                        <ul class="card-features">
+                            <li>Live server or doc ZIP</li>
+                            <li>Full resource tree</li>
+                            <li>Capabilities &amp; relationships</li>
+                        </ul>
+                        <div class="card-terminal mono">
+                            <span class="prompt">$</span> <span class="cmd">java -jar analyzer.jar -w localhost</span>
+                        </div>
+                        <a
+                            href="https://github.com/model-graph-tools/analyzer"
+                            class="card-link"
+                            target="_blank"
+                            rel="noopener"
+                            >View on GitHub &rarr;</a
+                        >
+                    </div>
+                    <div class="card" data-color="red">
+                        <div class="card-label label-mono mono">RUST CLI</div>
+                        <div class="card-name">mgt</div>
+                        <p class="card-desc">Orchestrate the analysis pipeline and manage model containers. Bundled with the MCP server &mdash; install standalone for direct CLI use.</p>
+                        <ul class="card-features">
+                            <li>Analyze WildFly and feature packs</li>
+                            <li>Start/stop model containers</li>
+                            <li>Browse with Neo4j (<code>mgt browse &lt;version&gt;</code>)</li>
+                        </ul>
+                        <div class="card-terminal mono">
+                            <span class="prompt">$</span> <span class="cmd">mgt start 39</span>
+                        </div>
+                        <a
+                            href="https://github.com/model-graph-tools/tooling"
+                            class="card-link"
+                            target="_blank"
+                            rel="noopener"
+                            >View on GitHub &rarr;</a
+                        >
+                    </div>
+                    <div class="card" data-color="purple">
+                        <div class="card-label label-mono mono">MCP SERVER</div>
+                        <div class="card-name">Claude Plugin</div>
+                        <p class="card-desc">Explore the model from AI agents via MCP and agent skills.</p>
+                        <ul class="card-features">
+                            <li>Search &amp; browse resources</li>
+                            <li>Compare versions</li>
+                            <li>Run Cypher queries</li>
+                        </ul>
+                        <div class="card-terminal mono">
+                            <div>
+                                <span class="prompt">$</span>
+                                <span class="cmd"
+                                    >claude plugin marketplace add
+                                    https://github.com/model-graph-tools/claude-plugin</span
+                                >
+                            </div>
+                            <div>
+                                <span class="prompt">$</span>
+                                <span class="cmd">claude plugin install mgt@model-graph-tools</span>
+                            </div>
+                        </div>
+                        <div class="card-links">
+                            <a
+                                href="https://github.com/model-graph-tools/claude-plugin"
+                                class="card-link"
+                                target="_blank"
+                                rel="noopener"
+                                >View on GitHub &rarr;</a
+                            >
+                            <a
+                                href="https://github.com/model-graph-tools/claude-plugin#what-you-can-do"
+                                class="card-link"
+                                target="_blank"
+                                rel="noopener"
+                                >Tool reference &rarr;</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section faq" id="faq">
             <div class="container">
                 <h2 class="section-title">FAQ</h2>
                 <div class="content-grid">
